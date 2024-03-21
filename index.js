@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
 });
 
 // Definindo a porta em que o servidor vai escutar as solicitações
-const porta = 3000;
+const porta = 8080;
 
 // Iniciando o servidor e fazendo-o escutar na porta especificada
 server.listen(porta, () => {
