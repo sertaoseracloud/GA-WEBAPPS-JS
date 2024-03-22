@@ -10,6 +10,28 @@ on:
   workflow_dispatch:
 
 jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.0
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+
+      - name: Capture App Service name
+        id: capture-app-service-name
+        run: echo "::set-output name=app-service-name::$(terraform output -raw app_service_name)"
+        
   deploy:
     runs-on: ubuntu-latest
     environment:
