@@ -30,7 +30,7 @@ jobs:
 
       - name: Capture App Service name
         id: capture-app-service-name
-        run: echo "::set-output name=app-service-name::$(terraform output -raw app_service_name)"
+        run: echo "app-service-name=$(terraform output -raw app_service_name)" >> $GITHUB_OUTPUT
         
   deploy:
     runs-on: ubuntu-latest
