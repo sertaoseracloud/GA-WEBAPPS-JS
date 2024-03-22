@@ -8,8 +8,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-permissions:
-    id-token: write #This is required for requesting the JWT
 
 jobs:
   terraform:
@@ -21,6 +19,8 @@ jobs:
 
       - name: Login to Azure
         uses: azure/login@v1
+        permissions:
+          id-token: write #This is required for requesting the JWT
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_07B963E371794CB28621D858B05C46E6 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_669592EFD9F64854869DC3C4B7A093B0 }}
