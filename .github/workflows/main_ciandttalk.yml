@@ -17,15 +17,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Login to Azure
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_07B963E371794CB28621D858B05C46E6 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_669592EFD9F64854869DC3C4B7A093B0 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_88E13A0974A04587982C84EE7638CB3C }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
