@@ -33,6 +33,7 @@ jobs:
         run: echo "app-service-name=$(terraform output -raw app_service_name)" >> $GITHUB_OUTPUT
         
   deploy:
+    needs: terraform
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
